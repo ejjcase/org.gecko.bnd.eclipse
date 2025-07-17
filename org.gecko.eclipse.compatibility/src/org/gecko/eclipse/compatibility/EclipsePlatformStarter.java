@@ -268,9 +268,12 @@ public class EclipsePlatformStarter implements ServiceTrackerCustomizer<Applicat
 			try {
 				start = launcher.start(null);
 				deferred.resolve(start);
+				if (start instanceof Integer) {
+					return (Integer) start;
+				}
 			} catch (Exception e) {
 				deferred.fail(e);
-			}	
+			}
 			return 198;
 		}
 	}
